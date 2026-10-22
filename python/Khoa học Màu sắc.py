@@ -8,10 +8,6 @@ st.set_page_config(
     layout="wide"
 )
 
-# ==============================================================================
-# SỬA LỖI ĐƯỜNG DẪN LOGO CHẠY ĐƯỢC CẢ LOCAL & STREAMLIT CLOUD
-# ==============================================================================
-# Lấy chính xác thư mục chứa file script này
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 logo_folder = os.path.join(CURRENT_DIR, "logo")
 
@@ -25,10 +21,6 @@ def load_equal_logo(image_path, target_height=130):
     except Exception:
         return image_path
 
-
-# ==============================================================================
-# 1. THANH MENU BÊN TRÁI (SIDEBAR): THÔNG TIN NHÓM LÊN ĐẦU TIÊN
-# ==============================================================================
 st.sidebar.markdown("## 📌 THÔNG TIN NHÓM")
 st.sidebar.write("**Thành viên 1:** Võ Minh Thái")
 st.sidebar.write("**MSSV:** 23158141")
@@ -48,10 +40,6 @@ if os.path.exists(logo_folder):
     if logo_files:
         st.sidebar.markdown("---")
 
-
-# ==============================================================================
-# 2. KHU VỰC HEADER: CĂN GIỮA 2 LOGO VÀ KHỐI CHỮ
-# ==============================================================================
 col_logo1, col_title, col_logo2 = st.columns([1, 2.8, 1], vertical_alignment="center")
 
 if os.path.exists(logo_folder):
