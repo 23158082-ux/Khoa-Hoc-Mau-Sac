@@ -9,8 +9,13 @@ st.set_page_config(
 )
 
 # ==============================================================================
-# HÀM BỔ TRỢ: CÂN BẰNG CHIỀU CAO 2 LOGO
+# SỬA LỖI ĐƯỜNG DẪN LOGO CHẠY ĐƯỢC CẢ LOCAL & STREAMLIT CLOUD
 # ==============================================================================
+# Lấy chính xác thư mục chứa file script này
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+logo_folder = os.path.join(CURRENT_DIR, "logo")
+
+
 def load_equal_logo(image_path, target_height=130):
     try:
         img = Image.open(image_path)
@@ -32,7 +37,6 @@ st.sidebar.write("**MSSV:** 23158082")
 st.sidebar.markdown("---")
 
 # Tải Logo ở Sidebar
-logo_folder = "logo"
 if os.path.exists(logo_folder):
     logo_files = sorted([
         os.path.join(logo_folder, f) 
@@ -46,12 +50,10 @@ if os.path.exists(logo_folder):
 
 
 # ==============================================================================
-# 2. KHU VỰC HEADER: CĂN GIỮA ĐỒNG CẤP DỌC/NGANG GIỮA 2 LOGO VÀ KHỐI CHỮ
+# 2. KHU VỰC HEADER: CĂN GIỮA 2 LOGO VÀ KHỐI CHỮ
 # ==============================================================================
-# Căn lề giữa theo chiều dọc cho cả 3 cột (vertical_alignment="center")
 col_logo1, col_title, col_logo2 = st.columns([1, 2.8, 1], vertical_alignment="center")
 
-# Hiển thị Logo trái và phải
 if os.path.exists(logo_folder):
     logo_files = sorted([
         os.path.join(logo_folder, f) 
@@ -65,11 +67,10 @@ if os.path.exists(logo_folder):
     elif len(logo_files) == 1:
         col_logo1.image(load_equal_logo(logo_files[0], target_height=130))
 
-# Khối chữ nằm trọn ở cột giữa, cân bằng tuyệt đối với 2 logo
 with col_title:
     st.markdown(
         "<h4 style='text-align: center; color: #4A90E2; font-weight: bold; margin-bottom: 2px; font-size: 18px;'>"
-        "TRƯỜNG ĐẠI HỌC CÔNG NGHỆ KỸ THUẬT TP. HỒ CHÍ MINH"
+        "TRƯỜNG ĐẠI CÔNG NGHỆ KỸ THUẬT TP. HỒ CHÍ MINH"
         "</h4>", 
         unsafe_allow_html=True
     )
